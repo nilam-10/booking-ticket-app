@@ -1,10 +1,10 @@
 
 ---
 
-### 🎟️ Assignment 2: Ticket Booking Management System — `README.md`
+###  Assignment 2: Ticket Booking Management System 
 
 ```markdown
-# 🎟️ Ticket Booking Management System
+# ticket Booking Management System
 
 A Django web application for booking event/show tickets. Includes seat selection, booking history, and custom admin panel. This project strictly follows Class-Based Views (CBV), uses manual HTML forms, and is deployed using Docker and Jenkins.
 
