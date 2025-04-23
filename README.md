@@ -1,66 +1,65 @@
+# Ticket Booking Management System
+
+A Django-based web application for booking tickets to shows/events, featuring seat selection, booking history, and a custom admin dashboard. Built entirely with Class-Based Views (CBVs) and manual form handling.
 
 ---
 
-### Assignment 2: Ticket Booking Management System 
+## 🛠️ Tech Stack
 
-```markdown
-#  Ticket Booking Management System
-
-A Django web application for booking event/show tickets with seat selection, booking history, and a custom admin dashboard. Built entirely using CBVs, and manual form handling.
-
----
-
-## 🔧 Tech Stack
-
-- Backend: Django (Python)
-- Frontend: HTML, CSS, JavaScript
-- DevOps: Docker, Docker Compose, Jenkins
-- Database: SQLite (default)
+- **Backend**: Django (Python)
+- **Frontend**: HTML, CSS, JavaScript
+- **Database**: SQLite (default)
+- **DevOps**: Docker, Docker Compose, Jenkins
 
 ---
 
 ## 🚀 Features
 
 ### 🔐 Authentication
-- Register, Login, Logout
+- User Registration
+- Secure Login & Logout
 
-### 🧑‍💻 User Experience
-- View shows/events
-- Book tickets with seat selection
-- View booking history
+### 🎫 User Interface
+- Browse upcoming shows and events
+- Select and book seats
+- Access personal booking history
 
-### 🛠️ Admin Features
-- Manage shows: Add/Edit/Delete
-- View all bookings
-- Custom interface (not Django Admin)
+### 🛠️ Admin Panel (Custom Interface)
+- Add, edit, and delete shows
+- View all user bookings
+- Completely custom interface (no Django admin)
 
 ---
 
 ## 🐳 DevOps
 
-- Fully Dockerized
-- CI/CD via Jenkins (`Jenkinsfile` included)
-
+- Fully containerized using Docker & Docker Compose
+- Continuous Integration/Deployment enabled via Jenkins (`Jenkinsfile` included)
 
 ---
+
 ## ▶️ Setup Instructions
 
 ```bash
+# Clone the repository
 git clone https://github.com/nilam-10/booking-ticket-app
 
+# Build and run the project
 docker-compose up --build
-open at http://localhost:8090/
+
+# Visit the app at
+http://localhost:8090/
 
 #Project Structure
 BOOKING-TICKET-APP/
-├── ticket_booking/             # Project settings
+├── ticket_booking/             # Project configuration
 │   ├── __init__.py
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
 │
-├── core/                       # Main app with views, templates, logic
+├── core/                       # Main application
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
@@ -76,5 +75,5 @@ BOOKING-TICKET-APP/
 ├── Jenkinsfile
 ├── manage.py
 ├── requirements.txt
-├── demo.gif                    # UI demo
+├── demo.gif                    # UI walkthrough
 └── README.md
