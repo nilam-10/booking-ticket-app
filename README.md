@@ -1,12 +1,12 @@
 
 ---
 
-###  Assignment 2: Ticket Booking Management System 
+### Assignment 2: Ticket Booking Management System 
 
 ```markdown
-# ticket Booking Management System
+#  Ticket Booking Management System
 
-A Django web application for booking event/show tickets. Includes seat selection, booking history, and custom admin panel. This project strictly follows Class-Based Views (CBV), uses manual HTML forms, and is deployed using Docker and Jenkins.
+A Django web application for booking event/show tickets with seat selection, booking history, and a custom admin dashboard. Built entirely using CBVs, and manual form handling.
 
 ---
 
@@ -14,52 +14,44 @@ A Django web application for booking event/show tickets. Includes seat selection
 
 - Backend: Django (Python)
 - Frontend: HTML, CSS, JavaScript
-
-- DevOps: Docker, Docker Compose, Jenkins (CI/CD)
+- DevOps: Docker, Docker Compose, Jenkins
+- Database: SQLite (default)
 
 ---
 
 ## 🚀 Features
 
 ### 🔐 Authentication
-- User Registration
-- User Login/Logout
+- Register, Login, Logout
 
-### 🎫 User Functionality
-- View upcoming events/shows
+### 🧑‍💻 User Experience
+- View shows/events
 - Book tickets with seat selection
 - View booking history
 
-### 🛠️ Admin Panel
-- Custom admin interface (no Django admin)
-- Add/Edit/Delete events
-- View all user bookings
+### 🛠️ Admin Features
+- Manage shows: Add/Edit/Delete
+- View all bookings
+- Custom interface (not Django Admin)
 
 ---
 
-## 🐳 Docker & Jenkins
+## 🐳 DevOps
 
-### Docker
-- `Dockerfile` included for containerization
-- `docker-compose.yml` for quick setup
+- Fully Dockerized
+- CI/CD via Jenkins (`Jenkinsfile` included)
 
-### Jenkins
-- `Jenkinsfile` for CI/CD pipeline — build, test, deploy automation
 
 ---
-
-## 🛠️ Setup Instructions
+## ▶️ Setup Instructions
 
 ```bash
-# Clone the repository
 git clone https://github.com/nilam-10/booking-ticket-app
 
-
-# Run using Docker
 docker-compose up --build
-view at http://localhost:8090/
+open at http://localhost:8090/
 
-#Project struture
+#Project Structure
 BOOKING-TICKET-APP/
 ├── ticket_booking/             # Project settings
 │   ├── __init__.py
@@ -86,4 +78,3 @@ BOOKING-TICKET-APP/
 ├── requirements.txt
 ├── demo.gif                    # UI demo
 └── README.md
-
