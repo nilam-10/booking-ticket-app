@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Book Tickets for {{ show.name }}</h2>
+<p>
+    Date: {{ show.date }}<br>
+    Time: {{ show.time }}<br>
+    Venue: {{ show.venue }}<br>
+    Available Seats: {{ show.available_seats }}
+</p>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="seats" class="form-label">Number of Seats</label>
+        <input type="number" class="form-control" id="seats" name="seats" min="1" max="{{ show.available_seats }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+</form>
+{% endblock %}

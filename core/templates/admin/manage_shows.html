@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Manage Shows</h2>
+
+<!-- Add Show Form -->
+<h3>Add New Show</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="add">
+    <div class="mb-3">
+        <label for="name" class="form-label">Show Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <div class="mb-3">
+        <label for="time" class="form-label">Time</label>
+        <input type="time" class="form-control" id="time" name="time" required>
+    </div>
+    <div class="mb-3">
+        <label for="venue" class="form-label">Venue</label>
+        <input type="text" class="form-control" id="venue" name="venue" required>
+    </div>
+    <div class="mb-3">
+        <label for="total_seats" class="form-label">Total Seats</label>
+        <input type="number" class="form-control" id="total_seats" name="total_seats" min="1" required>
+    </div>
+    <div class="mb-3">
+        <label for="ticket_price" class="form-label">Ticket Price</label>
+        <input type="number" class="form-control" id="ticket_price" name="ticket_price" step="0.01" min="0" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Show</button>
+</form>
+
+<!-- Show List -->
+<h3 class="mt-5">Existing Shows</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Venue</th>
+            <th>Total Seats</th>
+            <th>Available Seats</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for show in shows %}
+        <tr>
+            <td>{{ show.name }}</td>
+            <td>{{ show.date }}</td>
+            <td>{{ show.time }}</td>
+            <td>{{ show.venue }}</td>
+            <td>{{ show.total_seats }}</td>
+            <td>{{ show.available_seats }}</td>
+            <td>{{ show.ticket_price }}</td>
+            <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{ show.id }}">Edit</button>
+                <form method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="show_id" value="{{ show.id }}">
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+        <!-- Edit Modal -->
+        <div class="modal fade" id="editModal{{ show.id }}" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Show</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="edit">
+                            <input type="hidden" name="show_id" value="{{ show.id }}">
+                            <div class="mb-3">
+                                <label class="form-label">Show Name</label>
+                                <input type="text" class="form-control" name="name" value="{{ show.name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Date</label>
+                                <input type="date" class="form-control" name="date" value="{{ show.date }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Time</label>
+                                <input type="time" class="form-control" name="time" value="{{ show.time }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Venue</label>
+                                <input type="text" class="form-control" name="venue" value="{{ show.venue }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Total Seats</label>
+                                <input type="number" class="form-control" name="total_seats" value="{{ show.total_seats }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Available Seats</label>
+                                <input type="number" class="form-control" name="available_seats" value="{{ show.available_seats }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ticket Price</label>
+                                <input type="number" class="form-control" name="ticket_price" value="{{ show.ticket_price }}" step="0.01" min="0" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <tr>
+            <td colspan="8">No shows found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

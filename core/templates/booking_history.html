@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Your Booking History</h2>
+{% if bookings %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Show</th>
+            <th>Date</th>
+            <th>Seats</th>
+            <th>Booking Date</th>
+            <th>Total Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.show.name }}</td>
+            <td>{{ booking.show.date }}</td>
+            <td>{{ booking.seats }}</td>
+            <td>{{ booking.booking_date }}</td>
+            <td>${{ booking.total_cost }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No bookings found.</p>
+{% endif %}
+{% endblock %}

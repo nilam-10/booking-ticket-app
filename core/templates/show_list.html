@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Available Shows</h2>
+<div class="row">
+    {% for show in shows %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ show.name }}</h5>
+                <p class="card-text">
+                    Date: {{ show.date }}<br>
+                    Time: {{ show.time }}<br>
+                    Venue: {{ show.venue }}<br>
+                    Available Seats: {{ show.available_seats }}
+                </p>
+                <a href="{% url 'book_ticket' show.id %}" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No shows available.</p>
+    {% endfor %}
+</div>
+{% endblock %}

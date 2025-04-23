@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Bookings</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Show</th>
+            <th>Seats</th>
+            <th>Booking Date</th>
+            <th>Total Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.user.username }}</td>
+            <td>{{ booking.show.name }}</td>
+            <td>{{ booking.seats }}</td>
+            <td>{{ booking.booking_date }}</td>
+            <td>${{ booking.total_cost }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
